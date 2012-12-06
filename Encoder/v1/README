@@ -1,0 +1,52 @@
+Compliation
+=============
+
+How do you compile and run the java code.
+
+Easy as 1. 2. 3.
+
+1. Via a shell or prompt execute javac
+Example:
+$ javac Encoder.java
+
+2. You should have hopefully no errors and a new Encoder .class file
+
+3. Use java to run the class file
+Example:
+$ java Encoder
+Hak5 Duck Encoder 1.2
+
+usage: duckencode -i [file ..]                  encode specified file
+   or: duckencode -i [file ..] -o [file ..]     encode to specified file
+...
+...
+
+
+
+Known Compiling Errors
+=======================
+
+1. Unmappable character for encoding ASCII ....
+
+Example:
+$ javac Encoder_uk.java 
+Encoder_uk.java:173: warning: unmappable character for encoding ASCII
+                                                        case '?':
+
+Why:
+Your system is using a different encoding mechanism (eg. UTF-8 ) 
+
+Solution:
+Add the "-encoding <your encoding>" option to javac
+
+Example:
+javac -encoding ISO-8859-1 Encoder_uk.java
+
+
+
+Feedback
+=============
+
+Use the hak5 forum:
+
+http://forums.hak5.org/index.php?showforum=56

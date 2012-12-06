@@ -1,0 +1,31 @@
+This new version allows you to use alternative layout. It supports ASCII, ISO-8859-1 and unicode.
+
+$java -jar duckencode.jar -i script.txt -o inject.bin -l fr
+or
+$java -jar duckencode.jar -i script.txt -o inject.bin -l foo/bar/mylayout.properties
+
+----------
+
+Hak5 Duck Encoder 2.1
+
+usage: duckencode -i [file ..]            encode specified file
+   or: duckencode -i [file ..] -o [file ..]    encode to specified file
+
+Arguments:
+   -i [file ..]         Input File
+   -o [file ..]         Output File
+   -l [file ..]         Keyboard Layout (us/fr/pt or a path to a properties file)
+
+Script Commands:
+   ALT [key name] (ex: ALT F4, ALT SPACE)
+   CTRL | CONTROL [key name] (ex: CTRL ESC)
+   CTRL-ALT [key name] (ex: CTRL-ALT DEL)
+   CTRL-SHIT [key name] (ex: CTRL-SHIFT ESC)
+   DEFAULT_DELAY | DEFAULTDELAY [Time in millisecond * 10] (change the delay between each command)
+   DELAY [Time in millisecond * 10] (used to overide temporary the default delay)
+   GUI | WINDOWS [key name] (ex: GUI r, GUI l)
+   REM [anything] (used to comment your code, no obligation :) )
+   SHIFT [key name] (ex: SHIFT DEL)
+   STRING [any character of your layout]
+   [key name] (anything in the keyboard.properties)
+
