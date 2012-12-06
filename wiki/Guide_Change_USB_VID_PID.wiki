@@ -1,0 +1,32 @@
+#summary Quick Guide to quickly Change VID and PID of Ducky without recompiling.
+
+= Introduction =
+
+Rather than recompile the firmware to change the VID and PID of the Ducky.
+
+Simply use a hexeditor / or some sed fu - to change the VID and PID!
+
+And simply re-flash the firmware.
+
+= Details =
+The default VID & PID is 03EB (VID) 2403 (PID)
+
+Due to the Endianess of the hex file we need to search for *EB030324*
+
+{{{
+hexdump -C usb.hex |grep "EB030324"
+00010700  34 30 45 42 30 33 30 33  32 34 36 38 0d 0a 3a 31  |40EB03032468..:1|
+}}}
+
+Now on Linux, we can easily change the PID to 2503. (or 0325 after being converted to hex = *\x30\x33\x32\x35* via _sed_
+
+The following command is used to change the VID & PID, usb.hex is left in its default state (backup) usb1.hex will contain our new firmware with the VID /PID changed:
+{{{
+sed 's/\x45\x42\x30\x33\x30\x33\x32\x34/\x45\x42\x30\x33\x30\x33\x32\x35/g' < usb.hex >usb1.hex 
+}}}
+
+Now to check usb1.hex, for the VID/PID (03EB 2503):
+{{{
+hexdump -C usb1.hex |grep "EB030325"
+00010700  34 30 45 42 30 33 30 33  32 35 36 38 0d 0a 3a 31  |40EB03032568..:1|
+}}}
