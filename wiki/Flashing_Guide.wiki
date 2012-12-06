@@ -22,9 +22,9 @@ program.bat newfirmware.hex
 
 ==Unix/OSX==
 On the Unix/OSX side grab these nice shell scripts to dump existing and program new firmware. 
-Available here: http://www.usbrubberducky.com/files/dfu-linux/
-
-http://dfu-programmer.sourceforge.net/
+Available here: 
+ * http://www.usbrubberducky.com/files/dfu-linux/
+ * http://dfu-programmer.sourceforge.net/
 
 ===Flashing the Firmware===
 
