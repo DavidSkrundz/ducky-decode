@@ -1,0 +1,16 @@
+#summary Quick Guide to "Twin Duck" Composite Firmware
+#labels Composite,Ducky,Windows
+
+=Introduction=
+Currently *Windows Only* composite USB Mass Storage and HID Keyboard
+
+= Prerequisites =
+ * Label the SDcard as "DUCKY" (all in CAPS, without quotes)
+  * Windows: Right Click on SDcard -> Properties -> insert "DUCKY" within text field at top, click OK
+ * Have an executable/script called "duck" (lowercase), within the root directory of the SDcard
+
+= How it all works?=
+ * Basically plug in the Ducky, and it auto mounts as a USB Mass Storage Device.
+ * Press the button on the Ducky, to trigger the HID Keyboard.
+ * Ducky searches for drive label "DUCKY" and then is pre-programmed to execute %DUCKY%/duck
+  * "duck" can be either duck.com/duck.bat/duck.exe
