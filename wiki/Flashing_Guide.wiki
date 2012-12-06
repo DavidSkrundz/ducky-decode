@@ -1,0 +1,36 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:#summary How to reprogram / flash the Ducky
+
+= Programming/Flashing the Ducky =
+
+==Prerequisites==
+===Windows===
+When it comes to programming the Duck you'll need these resources for Windows: http://hak5.org/Duck%20Programming.zip . 
+
+Additionally you may need JRE FLIP from http://www.atmel.com/tools/FLIP.aspx and be sure to use the drivers in the Programming.zip
+
+*All relevant Flash files can be found in the SVN repo*
+
+===Unix/OSX===
+On the Unix/OSX side grab these nice shell scripts to dump existing and program new firmware. 
+Available here: http://www.usbrubberducky.com/files/dfu-linux/
+
+==Flashing==
+First insert the ducky while continuously keeping the little black button pressed.
+
+This puts the ducky into _dfu-mode_; we need to be in this mode to update the firmware.
+
+It's pretty simple, just execute: 
+
+{{{program.bat newfirmware.hex }}}
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
