@@ -3,7 +3,7 @@
 = Programming/Flashing the Ducky =
 
 ==Windows==
-When it comes to programming the Duck you'll need these resources for Windows: http://hak5.org/Duck%20Programming.zip . 
+When it comes to programming the Duck you'll need these resources for Windows: http://code.google.com/p/ducky-decode/source/browse/trunk/Flash/Duck%20Programming.zip . 
 
 Additionally you may need JRE FLIP from http://www.atmel.com/tools/FLIP.aspx and be sure to use the drivers in the Programming.zip
 
