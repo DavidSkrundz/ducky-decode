@@ -1,15 +1,4 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists#summary Naked Duck - Trigger Multiple Payloads
+#summary How To Trigger Multi-Payloads on Naked Duck Firmware
 
 = The Naked Duck =
 
@@ -30,4 +19,3 @@ With the ducky still connected and naked (no case, sucks I know), enable either
   # CAPS_LOCK (inject3.bin).
 
 Then push the reset switch on the naked duck, to trigger the 2nd/3rd payload.
-  * Automatic links to other wiki pages
