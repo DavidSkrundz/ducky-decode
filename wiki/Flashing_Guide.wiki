@@ -1,29 +1,15 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:#summary How to reprogram / flash the Ducky
+#summary How-to Flash / Update / Change the Firmware on the Ducky
 
 = Programming/Flashing the Ducky =
 
-==Prerequisites==
-===Windows===
+==Windows==
 When it comes to programming the Duck you'll need these resources for Windows: http://hak5.org/Duck%20Programming.zip . 
 
 Additionally you may need JRE FLIP from http://www.atmel.com/tools/FLIP.aspx and be sure to use the drivers in the Programming.zip
 
 *All relevant Flash files can be found in the SVN repo*
 
-===Unix/OSX===
-On the Unix/OSX side grab these nice shell scripts to dump existing and program new firmware. 
-Available here: http://www.usbrubberducky.com/files/dfu-linux/
-
-==Flashing==
+===Flashing===
 First insert the ducky while continuously keeping the little black button pressed.
 
 This puts the ducky into _dfu-mode_; we need to be in this mode to update the firmware.
@@ -31,6 +17,33 @@ This puts the ducky into _dfu-mode_; we need to be in this mode to update the fi
 It's pretty simple, just execute: 
 
 {{{program.bat newfirmware.hex }}}
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+
+==Unix/OSX==
+On the Unix/OSX side grab these nice shell scripts to dump existing and program new firmware. 
+Available here: http://www.usbrubberducky.com/files/dfu-linux/
+
+http://dfu-programmer.sourceforge.net/
+
+===Flashing the Firmware===
+
+====Dump(backup) current firmware====
+
+{{{sudo ./dfu-programmer at32uc3b1256 dump >dump.bin}}}
+
+Don't forget to get the ducky working again:
+
+{{{sudo ./dfu-programmer at32uc3b1256 reset}}}
+
+====Update====
+
+1st Erase ducky:
+
+{{{sudo ./dfu-programmer at32uc3b1256 erase}}}
+
+Update firmware:
+
+{{{sudo ./dfu-programmer at32uc3b1256 flash --suppress-bootloader-mem ducky-update.hex}}}
+
+Don't forget to get the ducky working again:
+
+{{{sudo ./dfu-programmer at32uc3b1256 reset}}}
