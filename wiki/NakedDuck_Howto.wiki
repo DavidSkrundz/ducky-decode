@@ -1,0 +1,33 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists#summary Naked Duck - Trigger Multiple Payloads
+
+= The Naked Duck =
+
+Its not the best piece of firmware I was hoping for, and its rather limited in its application.  But you can now trigger multiple payloads!
+
+==Setup==
+You need to create 3 files on the sdcard, and have a naked ducky (no case)
+  # *inject.bin* - default; ducky will always run this on insertion into a computer
+  # *inject2.bin*
+  # *inject3.bin*
+
+
+==Trigger==
+Now how do we trigger inject2/3.bin???
+
+With the ducky still connected and naked (no case, sucks I know), enable either
+  # NUM_LOCK (inject2.bin)
+  # CAPS_LOCK (inject3.bin).
+
+Then push the reset switch on the naked duck, to trigger the 2nd/3rd payload.
+  * Automatic links to other wiki pages
