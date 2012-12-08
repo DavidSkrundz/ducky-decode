@@ -23,8 +23,9 @@ program.bat newfirmware.hex
 ==Unix/OSX==
 On the Unix/OSX side grab these nice shell scripts to dump existing and program new firmware. 
 Available here: 
- * http://www.usbrubberducky.com/files/dfu-linux/
- * http://dfu-programmer.sourceforge.net/
+ * [http://downloads.sourceforge.net/project/dfu-programmer/dfu-programmer/0.5.4/dfu-programmer-0.5.4.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdfu-programmer%2F%3Fsource%3Ddlp&ts=1354995624&use_mirror=netcologne dfu-programmer-0.5.4]
+
+*Note*: There are reported problems with dfu programmer version 0.5.2, please try the latest version in the link provided above.
 
 ===Flashing the Firmware===
 
