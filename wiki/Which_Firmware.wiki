@@ -105,4 +105,4 @@ The PoC's HID attack is currently hardcoded to _file:///DUCKY/duck_
 
 So you need to rename the SDcard label to DUCKY, and have a Windows script / binary called duck(.exe|.bat|.com).
 
-_More Information is on the TwinDuck_HowTo_ Wiki Page_
+_More Information is on the TwinDuck_Howto_ Wiki Page_
