@@ -2,9 +2,12 @@
 #labels Composite,Ducky,Windows,OSX,Ubuntu
 
 =Introduction=
-Currently *Windows & OSX confirmed* composite USB Mass Storage and HID Keyboard
-
-Ubuntu still undergoing tetsing.
+Composite USB Mass Storage (default) and HID Keyboard emulation (on button press)
+==Confirmed to Work==
+ * Windows
+ * OSX 
+==Testing==
+ * Ubuntu.
 
 = Prerequisites =
  * Label the SDcard as "DUCKY" (all in CAPS, without quotes)
@@ -23,11 +26,11 @@ Ubuntu still undergoing tetsing.
  * Basically plug in the Ducky, and it auto mounts as a USB Mass Storage Device.
  * Press the button on the Ducky, to trigger the HID Keyboard.
  * Ducky uses Spotlight (Command-Space) and searches for script duckyosx
- * "duckyosx" can either be a script or a binary (with execute permission)
+  * "duckyosx" can either be a script or a binary (with execute permission)
 
 =Ubuntu=
 == How it all works?==
  * Basically plug in the Ducky, and it auto mounts as a USB Mass Storage Device.
  * Press the button on the Ducky, to trigger the HID Keyboard.
  * Ducky uses the run-box (ALT-F2) to execute "/media/DUCKY/duck"
- * "duck" can either be a script or a binary (with execute permission)
+  * "duck" can either be a script or a binary (with execute permission)
