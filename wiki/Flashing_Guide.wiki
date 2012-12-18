@@ -9,6 +9,32 @@ Additionally you may need JRE FLIP from http://www.atmel.com/tools/FLIP.aspx and
 
 *All relevant Flash files can be found in the SVN repo*
 
+===Installation===
+From checking my system, I did the following steps:
+ * Install Flip
+ * Install Atmel Driver  
+ * Copy batchisp into c:\program files(x86)\atmel\flip\bin
+ * Add " ;C:\Program Files (x86)\Atmel\Flip 3.4.5\bin " to my Enviroment Variables: Path (append the string in quotes to the path, and notice the ; before the c:\)
+
+*How to edit Environment Variables*:
+
+System Properties -> Advanced (tab)-> Environment variables (button) -> Path (input box)
+
+===Atmel Driver===
+I inserted the ducky in dfu mode (holding the Ducky's button down)
+
+When Windows couldnt find the driver, I did a manual install (sometimes a wizard will pop up, sometimes it wont)
+
+Control-Panel ->Hardware & Sound -> Add a device -> select atmel-dfu -> manually search for driver -> point to unzipped atmel-driver folder -> ok ->done
+====Problems====
+*Signed Driver Warning*:
+
+On Win7 I had a signed driver warning, but chose "install anyway". To successfully install the driver.
+
+*Win7 wont allow me to install an unsigned driver*:
+
+Take a look at http://www.techspot.com/community/topics/how-to-install-use-unsigned-drivers-in-windows-vista-7-x64.127187/
+
 ===Flashing===
 First insert the ducky while continuously keeping the little black button pressed.
 
