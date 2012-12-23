@@ -1,0 +1,43 @@
+#summary Breif Summary on Using Encoder v2.1
+#labels Ducky,Encoder,Version2.1
+
+= Introduction =
+The Duck Encoder Version 2.1 supports multiple languages through a properties file.
+
+The properties file, simply maps a character from a charset( ASCII, ISO, UTF) to given key press or combination of key presses.
+
+Download the svn: 
+
+{{{
+svn checkout https://ducky-decode.googlecode.com/svn/ ducky-decode
+}}}
+
+The Encoder lives at:
+{{{
+./trunk/Encoder/v2/
+}}}
+= Details =
+
+==Normal Operation==
+The normal operation defaults to the US keyboard mappings:
+{{{
+java -jar duckencoder.java -i input_file.txt -o inject.bin
+}}}
+
+==Language Support==
+This is provided with the _"-l_ flag:
+{{{
+-l <[2 letter country code]/[path to resources/country.properties file]>
+}}}
+
+===Encoder - UK Example===
+The normal operation default to the US keyboard mappings:
+{{{
+java -jar duckencoder.java -l uk -i input_file.txt -o inject.bin
+}}}
+
+===Encoder - FR Example ===
+The normal operation default to the US keyboard mappings:
+{{{
+java -jar duckencoder.java -l resources/fr.properties-i input_file.txt -o inject.bin
+}}}
