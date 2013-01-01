@@ -25,7 +25,7 @@ java -jar duckencoder.java -i input_file.txt -o inject.bin
 }}}
 
 ==Language Support==
-This is provided with the _"-l_ flag:
+This is provided with the _"-l"_ flag:
 {{{
 -l <[2 letter country code]/[path to resources/country.properties file]>
 }}}
@@ -39,5 +39,5 @@ java -jar duckencoder.java -l uk -i input_file.txt -o inject.bin
 ===Encoder - FR Example ===
 The normal operation default to the US keyboard mappings:
 {{{
-java -jar duckencoder.java -l resources/fr.properties-i input_file.txt -o inject.bin
+java -jar duckencoder.java -l resources/fr.properties -i input_file.txt -o inject.bin
 }}}
