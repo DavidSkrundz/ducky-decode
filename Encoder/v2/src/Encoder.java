@@ -244,13 +244,21 @@ public class Encoder {
 				} else if (instruction[0].equals("WINDOWS")
 						|| instruction[0].equals("GUI")) {
 					if (instruction.length == 1) {
-						file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_GUI")));
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
 						file.add((byte) 0x00);
 					} else {
 						file.add(strInstrToByte(instruction[1]));
 						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
 					}
-				} else {
+				} else if (instruction[0].equals("COMMAND")){
+					if (instruction.length == 1) {
+						file.add(strToByte(keyboardProps.getProperty("KEY_COMMAND")));
+						file.add((byte) 0x00);
+					} else {
+						file.add(strInstrToByte(instruction[1]));
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
+					}
+				}else {
 					/* treat anything else as a key */
 					file.add(strInstrToByte(instruction[0]));
 					file.add((byte) 0x00);
