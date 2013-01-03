@@ -2,6 +2,7 @@
 // Created:      8/10/2011
 // Author:       Jason Appelbaum Jason@Hak5.org	
 // Modified:     8/18/2012
+// Modified:     1/3/2012 midnitesnake
 // Author:       Dnucna
 
 import java.io.DataInputStream;
@@ -26,7 +27,7 @@ public class Encoder {
 	private static Properties layoutProps = new Properties();
 	
 	public static void main(String[] args) {
-		String helpStr = "Hak5 Duck Encoder 2.1\n\n"
+		String helpStr = "Hak5 Duck Encoder 2.2\n\n"
 			+ "usage: duckencode -i [file ..]\t\t\tencode specified file\n"
 			+ "   or: duckencode -i [file ..] -o [file ..]\tencode to specified file\n"
 			+ "\nArguments:\n"
