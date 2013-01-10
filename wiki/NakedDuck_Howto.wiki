@@ -2,16 +2,34 @@
 
 = The Naked Duck =
 
-Its not the best piece of firmware I was hoping for, and its rather limited in its application.  But you can now trigger multiple payloads!
+Now trigger multiple payloads!
 
-==Setup==
+==Version 2==
+===Setup===
+You can create upto 4 files on the sdcard, and have a suited ducky (USB case on...)
+  # *inject.bin* - default; ducky will always run this on insertion into a computer
+  # *inject2.bin*
+  # *inject3.bin*
+  # *inject4.bin*
+
+===Trigger===
+Now how do we trigger additional payloads???
+
+With the ducky still connected enable either:
+  # NUM_LOCK (inject2.bin)
+  # CAPS_LOCK (inject3.bin)
+  # SCROLL_LOCK (inject4.bin)
+
+*Warning*: use of these special keys in DuckyScript - will trigger additional payloads, meaning payloads may collide / interfere!
+
+==Version 1==
+===Setup===
 You need to create 3 files on the sdcard, and have a naked ducky (no case)
   # *inject.bin* - default; ducky will always run this on insertion into a computer
   # *inject2.bin*
   # *inject3.bin*
 
-
-==Trigger==
+===Trigger===
 Now how do we trigger inject2/3.bin???
 
 With the ducky still connected and naked (no case, sucks I know), enable either
