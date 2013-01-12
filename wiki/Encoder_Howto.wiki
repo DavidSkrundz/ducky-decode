@@ -93,3 +93,17 @@ then run it as normal
 {{{
 $ java -jar encoder.jar
 }}}
+
+==NullPointerException==
+Example:
+{{{
+java -jar encoder.jar -i script.txt -o inject.bin -l ru
+Error with input file!
+Exception in thread "main" java.lang.NullPointerException
+        at Encoder.main(Encoder.java:107)
+}}}
+===Cause===
+The Encoder is detecting a SPACE/ non-printable character at the end of a line.
+===Solution===
+ # Ensure there are no spaces at the end of a line.
+ # Ensure your file is either plain-text or RTF
