@@ -1,8 +1,8 @@
-#summary Brief Summary on Using Encoder v2.1
+#summary Brief Summary on Using Encoder v2.1+
 #labels Ducky,Encoder,Version2.1,Featured,Phase-Implementation
 
 = Introduction =
-The Duck Encoder Version 2.1 supports multiple languages through a properties file.
+The Duck Encoder Version 2.1/2.2 supports multiple languages through a properties file.
 
 The properties file, simply maps a character from a charset( ASCII, ISO, UTF) to given key press or combination of key presses.
 
