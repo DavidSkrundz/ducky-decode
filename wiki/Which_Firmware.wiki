@@ -18,7 +18,6 @@ These will be answered in turn below:
 ==Firmware==
 The Firmware is designed to be language independent.
 
-*Exception*: Composite payloads, as the HID keyboard emulation is hard-coded into the firmware.
 ==Encoder==
 This is where different languages/keyboard mappings come into effect.  Currently supported keyboards are:
  * US (United States)
@@ -44,9 +43,6 @@ See below for descriptions, reasons, and hints:
 ==duck.hex==
 Original duck firmware, enhanced to work on all Operating System's (Win,Unix,OSX,Android,+).
 
-==osx.hex==
-Virtually identical to _duck.hex_, only difference is VID & PID represent a Mac Keyboard.
-
 ==usb.hex==
 With support appearing to originally dwindle, and a private side project.  USB.hex turns the Ducky into a USB Mass Storage Device.
 
@@ -63,18 +59,20 @@ This firmware supports multiple-payloads:
  * inject.bin - default payload (will always run first)
  * inject2.bin - NUM_LOCK
  * inject3.bin - CAPS_LOCK
+ * inject4.bin - SCROLL_LOCK
 
 Basically, _inject.bin_ will always be triggered on Ducky insertion.
 
-_inject2/3.bin_ is triggered by ensuring only Num_Lock/Caps_Lock Keyboard LED is lit, followed by pushing the button on the Ducky.
+_inject2/3/4.bin_ is triggered by ensuring only Num_Lock/Caps_Lock/Scroll_Lock Keyboard LED is lit, followed by pushing the button on the Ducky.
 
-This projects Firmware was nicknamed * The Naked Duck / Naked Ducky Edition * as the Ducky has to be naked for you to push the button and trigger the 2nd/3rd payload.
+This projects Firmware was originally nicknamed * The Naked Duck / Naked Ducky Edition * as the Ducky has to be naked for you to push the button and trigger the 2nd/3rd payload.  Version 2 developments, mean the Ducky can now trigger on solely lit LEDs (if multiple LEDs are lit the last LED will take priority)
 
 ===Intended Purpose===
 One Ducky; Supporting 2x Operating Systems, Or staged Payloads:
  * _inject.bin_ - default file (simple 1-liner "DELAY 5000")
- * _inject2.bin_ - Windows Script/ Payload 2
+ * _inject2.bin_ - Windows XP Script/ Payload 2
  * _inject3.bin_ - OSX Script / Payload 3
+ * _inject4.bin_ - Windows 7 Script / Payload 4
 
 ====Multi OS Support====
 So on Windows Host, ensure Num_Lock is Lit, push the Ducky's button to deliver a Windows-based Payload.
@@ -88,21 +86,42 @@ You may depending on installed software (e.g. powershell) want to trigger one of
  * Windows 7+ - Use Num_Lock for inject2.bin to utilise powershell
  * Windows XP - Use Caps_Lock for inject3.bin to utilise other windows binaries (eg tftp to download payloads)
 
-==c_duck_XX.hex==
-Currently 2x PoCs for Windows OS's:
- * c_duck_us.hex - Composite Duck US Keyboard 4 Windows
- * c_duck_uk.hex - Composite Duck UK Keyboard 4 Windows 
-
+==c_duck.hex==
 This was another one of my goals (in addition to several requests).  Got a working PoC in time for the 1-year anniversary! (Originally, I was holding this back as a X-mas gift.  But someone quick spotted it, as I was cleaning up the SVN).  So I decided to publish a little earlier.
 
+Version 2 has added improvements - multi OS support, downside memory is limited to 4KB (2048 key presses).
+
 Nicknamed * The Twin Duck * as it functions as 2x separate Duckies; its primary function is mass-storage, and the HID attack is triggered through pushing the Ducky's button.
+
+===Special Requests===
+====S001====
+People were worried about driver load times affecting their payloads.  So S001 uses keyboard LEDs as the HID trigger; NUM/CAPS/SCROLL LOCK all trigger 1x payload _inject.bin_.
 
 ==Why?==
 Brings back the ol' Autorun/ USB-Switchblade attacks.
 
 ===Function===
-The PoC's HID attack is currently hardcoded to _file:///DUCKY/duck_
+To access Programs on the SDcard you are advised to label the SDcard eg. _DUCKY_
 
-So you need to rename the SDcard label to DUCKY, and have a Windows script / binary called duck(.exe|.bat|.com).
+Ubuntu:
+
+The USB partition is normally mounted at _/media/LABEL_ e.g. /media/Ducky
+
+OSX:
+
+OSX will auto mount at _/Volumes/LABEL_ e.g. /Volumes/Ducky
+
+Windows:
+
+Depending on the number of additional Drives/Partitions the Ducky could appear on E:\ or F:\
+
+Use *wmic* to dynamically locate the right drive letter
+{{{
+for /f %d in ('wmic volume get driveletter^, label ^| findstr "DUCKY"') do set myd=%d
+}}}
+Then execute your payload (this example duck.bat)
+{{{
+%myd%/duck
+}}}
 
 _More Information is on the TwinDuck_Howto_ Wiki Page_
