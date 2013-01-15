@@ -1,5 +1,5 @@
-#summary Breif Summary on Using Encoder v2.1
-#labels Ducky,Encoder,Version2.1
+#summary Brief Summary on Using Encoder v2.1
+#labels Ducky,Encoder,Version2.1,Featured,Phase-Implementation
 
 = Introduction =
 The Duck Encoder Version 2.1 supports multiple languages through a properties file.
@@ -26,10 +26,16 @@ java -jar duckencoder.java -i input_file.txt -o inject.bin
 
 ==Language Support==
 This is provided with the _"-l"_ flag:
+
+Linux:
 {{{
--l <[2 letter country code]/[path to resources/country.properties file]>
+-l <[2 letter country code]|[path to resources/country.properties file]>
 }}}
 
+Windows:
+{{{
+-l <[2 letter country code]|[path to resources\country.properties file]>
+}}}
 ===Encoder - UK Example===
 The normal operation default to the US keyboard mappings:
 {{{
@@ -38,9 +44,17 @@ java -jar duckencoder.java -l uk -i input_file.txt -o inject.bin
 
 ===Encoder - FR Example ===
 The normal operation default to the US keyboard mappings:
+
+Linux:
 {{{
 java -jar duckencoder.java -l resources/fr.properties -i input_file.txt -o inject.bin
 }}}
+
+Windows:
+{{{
+java -jar duckencoder.java -l resources\fr.properties -i input_file.txt -o inject.bin
+}}}
+*Note* : Backslash instead of forward slash
 
 =Problems=
 ==Trying to run encoder.jar under OS X 10.8 Mountain Lion==
