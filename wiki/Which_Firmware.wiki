@@ -1,4 +1,5 @@
 #summary Which Firmware Should I Use? Or Works Best?
+#labels Featured
 
 = Introduction =
 A popular set of questions on the forum are:
