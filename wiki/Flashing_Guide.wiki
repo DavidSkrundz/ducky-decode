@@ -22,11 +22,13 @@ When Windows couldnt find the driver, I did a manual install (sometimes a wizard
  * Find Atmel DFU Device
  * Update Driver
  * Manual Install
+ * Point Windows to the Atmel drivers from duck_programming.zip
 
 Or alternatively, you could try:
 
 Control-Panel ->Hardware & Sound -> Add a device -> select atmel-dfu -> manually search for driver -> point to unzipped atmel-driver folder -> ok ->done
-====Problems====
+
+===Problems===
 *Signed Driver Warning*:
 
 On Win7 I had a signed driver warning, but chose "install anyway". To successfully install the driver.
@@ -38,6 +40,42 @@ The Atmel driver is signed! You should not see this error!
 But for reference:
 
 Take a look at http://www.techspot.com/community/topics/how-to-install-use-unsigned-drivers-in-windows-vista-7-x64.127187/
+
+*Windows says the driver is already installed!*
+
+This message should be familiar
+
+{{{
+Device selection....................... PASS
+Hardware selection..................... PASS
+Opening port........................... AtLibUsbDfu: 3EB 2FF6 no device present.
+}}}
+
+Windows installs the wrong driver....
+
+Perform these steps:
+ * Load Device Manager
+ * Find Atmel DFU Device
+ * Update Driver
+ * Manual Install
+ * Point Windows to the Atmel drivers from duck_programming.zip
+
+Now you should get no errors:
+
+{{{
+Device selection....................... PASS
+Hardware selection..................... PASS
+Opening port........................... PASS
+Reading Bootloader version............. PASS    1.0.2
+Erasing................................ PASS
+Selecting FLASH........................ PASS
+Blank checking......................... PASS    0x00000 0x3ffff
+Parsing HEX file....................... PASS    USB_v2.hex
+WARNING: The user program and the bootloader overlap!
+Programming memory..................... PASS    0x00000 0x07caf
+Verifying memory....................... PASS    0x00000 0x07caf
+Starting Application................... PASS    RESET   0
+}}}
 
 ===Flashing===
 First insert the ducky while continuously keeping the little black button pressed.
