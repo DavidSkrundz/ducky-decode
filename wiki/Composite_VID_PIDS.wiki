@@ -1,0 +1,8 @@
+#summary Composite list of VID & PIDs
+#labels Composite,VIDPID
+
+= List =
+{{{
+0936  NuTesla
+        0030  Composite Device, Mass Storage Device (Flash Drive) and HID
+}}}
