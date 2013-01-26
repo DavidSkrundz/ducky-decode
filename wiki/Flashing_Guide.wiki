@@ -10,8 +10,8 @@ Additionally you may need JRE FLIP from http://www.atmel.com/tools/FLIP.aspx and
 *All relevant Flash files can be found in the SVN repo*
 
 Microsoft Visual C++ Redistributable:
-* x86 - http://www.microsoft.com/en-gb/download/deails.aspx?id=5555
-* x64 - http://www.microsoft.com/en-gb/download/details.aspx?id=14632
+ * x86 - http://www.microsoft.com/en-gb/download/deails.aspx?id=5555
+ * x64 - http://www.microsoft.com/en-gb/download/details.aspx?id=14632
 
 ===Installation===
 From a clean install on my system, I made the following steps:
