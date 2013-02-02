@@ -24,12 +24,15 @@ This is where different languages/keyboard mappings come into effect.  Currently
  * US (United States)
  * UK (United Kingdom)
  * DE (German)
- * DA (Danish)
+ * DK (Danish)
  * FR (French)
  * BE (Belgian)
  * NO (Norwegian)
  * PT (Portuguese)
  * SV (Swedish)
+ * IT (Italian)
+ * ES (in development)
+ * RU (in development)
 
 If your language/keyboard is not here get on the forums for support and guidance on creating new keyboard mappings.
 
@@ -98,22 +101,22 @@ Nicknamed * The Twin Duck * as it functions as 2x separate Duckies; its primary 
 ====S001====
 People were worried about driver load times affecting their payloads.  So S001 uses keyboard LEDs as the HID trigger; NUM/CAPS/SCROLL LOCK all trigger 1x payload _inject.bin_.
 
-==Why?==
+====S002====
+People were worried about driver load times affecting their payloads.  So S002 uses the Ducky's GPIO button as the HID trigger; for payload _inject.bin_.
+
+==Why Composite Firmware?==
 Brings back the ol' Autorun/ USB-Switchblade attacks.
 
 ===Function===
 To access Programs on the SDcard you are advised to label the SDcard eg. _DUCKY_
 
-Ubuntu:
-
+====Ubuntu====
 The USB partition is normally mounted at _/media/LABEL_ e.g. /media/Ducky
 
-OSX:
-
+====OSX====
 OSX will auto mount at _/Volumes/LABEL_ e.g. /Volumes/Ducky
 
-Windows:
-
+====Windows====
 Depending on the number of additional Drives/Partitions the Ducky could appear on E:\ or F:\
 
 Use *wmic* to dynamically locate the right drive letter
