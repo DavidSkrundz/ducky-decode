@@ -1,0 +1,11 @@
+#summary Sidebar
+
+ * [Encoder_Howto Encoder Guide]
+ * [Guide_Change_USB_VID_PID How to easily change the VID and PID of the Ducky]
+ * [Which_Firmware A Guide to Different Firmware and Functions]
+ * [Flashing_Guide How to Flash the Ducky ]
+ * [Keyboard_VID_PIDS Keyboard Devices]
+ * [MassStorage_VID_PIDS Mass Storage Devices]
+ * [Composite_VID_PIDS Composite Devices]	
+ * [HID_Codes]
+ * [Atmel_License]
