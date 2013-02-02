@@ -108,7 +108,7 @@ then run it as normal
 $ java -jar encoder.jar
 }}}
 
-== NullPointer Exception ==
+== Null-Pointer Exception ==
 Example:
 {{{
 java -jar encoder.jar -i script.txt -o inject.bin -l ru
