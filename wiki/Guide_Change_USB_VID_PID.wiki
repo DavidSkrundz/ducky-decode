@@ -3,9 +3,9 @@
 
 Rather than recompile the firmware to change the VID and PID of the Ducky.
 
-Simply use a hexeditor / or some sed fu - to change the VID and PID!
+The development Team have made it even easier to alter the VID (Vendor ID) & PID (Product ID) of the Ducky.
 
-And simply re-flash the firmware.
+Upgrade to Version 2 Firmware for the enhancements!
 
 ==Warning==
 
@@ -13,7 +13,23 @@ You need to keep the VID & PID within the same device class.  Eg keyboard for HI
 
 If you give the Ducky a completely different (or random) VID & PID such as a digital camera / webcam - the OS will load the wrong driver and the Ducky * will not work!*
 
-= Details =
+== Version 2 Firmware ==
+Version 2 Supports the emulation of a specific VID & PID read from a binary file: `vidpid.bin`.
+
+`vidpid.bin` needs to be within the root `/` of the sdcard.
+
+Simply use a hex editor to specify the 2byte VID followed by the 2byte PID
+
+=== Linux ===
+Example: Setting VID & PID for composite device:
+{{{
+hexedit /media/Ducky/vidpid.bin 
+00000000  03 eb 24 03                                       |..$.|
+}}}
+
+=== WIndows ===
+TODO
+
 ==Version 1 Firmware==
 ===Locate the VID & PID===
 The default VID & PID is 03EB (VID) 2403 (PID)
@@ -41,17 +57,4 @@ Now to check usb1.hex, for the VID/PID (03EB 2503):
 {{{
 hexdump -C usb1.hex |grep "EB030325"
 00010700  34 30 45 42 30 33 30 33  32 35 36 38 0d 0a 3a 31  |40EB03032568..:1|
-}}}
-
-==Version 2 Firmware==
-Version 2 Supports the emulation of a specific VID & PID read from a binary file: `vidpid.bin`.
-
-`vidpid.bin` needs to be within the root `/` of the sdcard.
-
-Simply use a hex editor to specify the 2byte VID followed by the 2byte PID
-
-Example: Setting VID & PID for composite device:
-{{{
-hexdump -C vidpid.bin 
-00000000  03 eb 24 03                                       |..$.|
 }}}
