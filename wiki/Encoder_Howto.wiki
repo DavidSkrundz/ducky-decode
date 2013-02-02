@@ -18,13 +18,13 @@ The Encoder lives at:
 }}}
 = Details =
 
-==Normal Operation==
+== Normal Operation ==
 The normal operation defaults to the US keyboard mappings:
 {{{
 java -jar duckencoder.java -i input_file.txt -o inject.bin
 }}}
 
-==Language Support==
+== Language Support ==
 This is provided with the _"-l"_ flag:
 
 Linux:
@@ -36,13 +36,13 @@ Windows:
 {{{
 -l <[2 letter country code]|[path to resources\country.properties file]>
 }}}
-===Encoder - UK Example===
+=== Encoder - UK Example ===
 The normal operation default to the US keyboard mappings:
 {{{
 java -jar duckencoder.java -l uk -i input_file.txt -o inject.bin
 }}}
 
-===Encoder - FR Example ===
+=== Encoder - FR Example ===
 The normal operation default to the US keyboard mappings:
 
 Linux:
@@ -56,8 +56,8 @@ java -jar duckencoder.java -l resources\fr.properties -i input_file.txt -o injec
 }}}
 *Note* : Backslash instead of forward slash
 
-=Problems=
-==Trying to run encoder.jar under OS X 10.8 Mountain Lion==
+= Problems =
+== Trying to run encoder.jar under OS X 10.8 Mountain Lion ==
 Error:
 {{{
 $ java -jar encoder.jar
@@ -80,12 +80,12 @@ Version of Java:
 $ java -version
 java version "1.6.0_37"
 }}}
-===Solution 1===
+=== Solution 1 ===
 Update java to version 1.7.0
  * http://docs.oracle.com/javase/7/docs/webnotes/install/mac/mac-jdk.html
  * http://reviews.cnet.com/8301-13727_7-57423014-263/how-to-install-and-uninstall-java-7-for-os-x/
 
-===Solution 2===
+=== Solution 2 ===
 compile the program on Java 1.6.X
 
 Compile the src:
@@ -108,7 +108,7 @@ then run it as normal
 $ java -jar encoder.jar
 }}}
 
-==NullPointerException==
+== NullPointer Exception ==
 Example:
 {{{
 java -jar encoder.jar -i script.txt -o inject.bin -l ru
@@ -116,8 +116,8 @@ Error with input file!
 Exception in thread "main" java.lang.NullPointerException
         at Encoder.main(Encoder.java:107)
 }}}
-===Cause===
+=== Cause ===
 The Encoder is detecting a SPACE/ non-printable character at the end of a line.
-===Solution===
+=== Solution ===
  # Ensure there are no spaces at the end of a line.
  # Ensure your file is either plain-text or RTF
