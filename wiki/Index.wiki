@@ -1,4 +1,7 @@
 #summary Ducky Decode Wiki Main Page
+= USB Rubber Ducky =
+==aka Ducky==
+[http://cdn.shopify.com/s/files/1/0068/2142/products/ducky4_thumb_medium.png?99]
 
 === Encoder ===
  * [Encoder_Howto Encoder Guide]
