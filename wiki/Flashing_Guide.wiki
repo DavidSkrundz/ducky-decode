@@ -1,4 +1,5 @@
 #summary How-to Flash / Update / Change the Firmware on the Ducky
+#labels Featured
 
 = Programming/Flashing the Ducky =
 
