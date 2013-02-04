@@ -2,6 +2,7 @@
 
  * [Encoder_Howto Encoder Guide]
  * [Guide_Change_USB_VID_PID How to Change the VID and PID]
+ * [Create_New_Language_Map How to Create New Language Maps]
  * [Which_Firmware A Guide to Different Firmware and Functions]
  * [Flashing_Guide How to Flash the Ducky ]
  * [Keyboard_VID_PIDS Keyboard Devices]
