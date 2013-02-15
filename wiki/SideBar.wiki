@@ -10,3 +10,4 @@
  * [Composite_VID_PIDS Composite Devices]	
  * [HID_Codes]
  * [Atmel_License]
+ * [Disclaimer]
