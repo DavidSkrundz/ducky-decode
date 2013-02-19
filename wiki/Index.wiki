@@ -18,6 +18,7 @@
  * [Composite_VID_PIDS Composite Devices]	
 
 ===Other===
+ * [FAQ]
 ====Codes====
  * [HID_Codes]
 ====License====
