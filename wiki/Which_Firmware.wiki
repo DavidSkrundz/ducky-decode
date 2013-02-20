@@ -44,17 +44,17 @@ It depends on your purpose for investing in the Ducky.  See below for a descript
 This is not an easy question to answer.  
 
 See below for descriptions, reasons, and hints: 
-==duck.hex==
+==duck.hex (Duck(Original))==
 Original duck firmware, enhanced to work on all Operating System's (Win,Unix,OSX,Android,+).
 
-==usb.hex==
+==usb.hex (FAT Duck)==
 With support appearing to originally dwindle, and a private side project.  USB.hex turns the Ducky into a USB Mass Storage Device.
 
 Originally mocked, as useless; Some people missed the potential/purpose of this project.  Originally used to bypass device-control software that would black list/whitelist USB devices based off VID and PID codes.  As the Ducky is programmable, so-long-as a valid VID/PID device class was used, the Ducky could bypass popular device-control software. 
 
 Once I had my fun (few months to be honest), I decided to release this publicly, as I thought people were getting upset with the progress on the Ducky.  At least people could convert their Duck into a useful USB drive, rather than have a failed project stuck in a drawer (Folks had forked out originally $80(USD)).
 
-==m_duck.hex==
+==m_duck.hex (Detour Duck(formerly Naked Duck))==
 Based off a request in the forum (Sorry cant remember who asked first?)
 
 I spent many a month trying to work out if payloads could be delivered based on keyboard LEDs, or on push of a Keyboard button that triggers an LED (eg. CAPS_Lock).
@@ -90,7 +90,7 @@ You may depending on installed software (e.g. powershell) want to trigger one of
  * Windows 7+ - Use Num_Lock for inject2.bin to utilise powershell
  * Windows XP - Use Caps_Lock for inject3.bin to utilise other windows binaries (eg tftp to download payloads)
 
-==c_duck.hex==
+==c_duck.hex (Twin Duck)==
 This was another one of my goals (in addition to several requests).  Got a working PoC in time for the 1-year anniversary! (Originally, I was holding this back as a X-mas gift.  But someone quick spotted it, as I was cleaning up the SVN).  So I decided to publish a little earlier.
 
 Version 2 has added improvements - multi OS support, downside memory is limited to 4KB (2048 key presses).
