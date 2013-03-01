@@ -5,6 +5,7 @@
 // Modified:     8/18/2012
 // Modified:     1/3/2013 midnitesnake "added COMMAND"
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
+// Modified:	 3/1/2013 midnitesnake "added REPEAT X"
 
 
 import java.io.DataInputStream;
@@ -29,7 +30,7 @@ public class Encoder {
         private static Properties layoutProps = new Properties();
         
         public static void main(String[] args) {
-                String helpStr = "Hak5 Duck Encoder 2.3\n\n"
+                String helpStr = "Hak5 Duck Encoder 2.4\n\n"
                         + "usage: duckencode -i [file ..]\t\t\tencode specified file\n"
                         + "   or: duckencode -i [file ..] -o [file ..]\tencode to specified file\n"
                         + "\nArguments:\n"
@@ -48,6 +49,7 @@ public class Encoder {
                         + "   ALT-SHIFT (swap language)\n"
 			+ "   SHIFT [key name] (ex: SHIFT DEL)\n"
                         + "   STRING [any character of your layout]\n"
+                        + "   REPEAT [Number] (Repeat last instruction N times)\n"
                         + "   [key name] (anything in the keyboard.properties)";                        
 
         String inputFile = null;
@@ -160,8 +162,11 @@ public class Encoder {
 
                 inStr = inStr.replaceAll("\\r", ""); // CRLF Fix
                 String[] instructions = inStr.split("\n");
+                String[] last_instruction = inStr.split("\n");
                 List<Byte> file = new ArrayList<Byte>();
                 int defaultDelay = 0;
+                int loop =0;
+                boolean repeat=false;
 
                 for (int i = 0; i < instructions.length; i++) {
                         try {
@@ -171,6 +176,20 @@ public class Encoder {
                                         continue;
 
                                 String instruction[] = instructions[i].split(" ", 2);
+                                
+                                if(i>0){
+                                		last_instruction=instructions[i-1].split(" ", 2);
+                                		last_instruction[0].trim();
+                                		if (last_instruction.length == 2) {
+                                        		last_instruction[1].trim();
+                                		}
+                                }else{
+                                		last_instruction=instructions[i].split(" ", 2);
+                                		last_instruction[0].trim();
+                                		if (last_instruction.length == 2) {
+                                        		last_instruction[1].trim();
+                                		}
+                                }
 
                                 instruction[0].trim();
 
@@ -178,11 +197,23 @@ public class Encoder {
                                         instruction[1].trim();
                                 }
 
-                                if (instruction[0].equals("DEFAULT_DELAY")
+								if (instruction[0].equals("REPEAT")){
+									loop=Integer.parseInt(instruction[1].trim());
+									repeat=true;
+								}else{
+									repeat=false;
+									loop=1;
+								}
+								while(loop>0){
+									if (repeat){
+										instruction=last_instruction;
+									}
+								
+                                	if (instruction[0].equals("DEFAULT_DELAY")
                                                 || instruction[0].equals("DEFAULTDELAY")) {
-                                        defaultDelay = Integer.parseInt(instruction[1].trim());
-                                        delayOverride = true;
-                                } else if (instruction[0].equals("DELAY")) {
+                                      	  defaultDelay = Integer.parseInt(instruction[1].trim());
+                                       	 delayOverride = true;
+                                	} else if (instruction[0].equals("DELAY")) {
                                         int delay = Integer.parseInt(instruction[1].trim());
                                         while (delay > 0) {
                                                 file.add((byte) 0x00);
@@ -195,12 +226,12 @@ public class Encoder {
                                                 }
                                         }
                                         delayOverride = true;
-                                } else if (instruction[0].equals("STRING")) {
+                                	} else if (instruction[0].equals("STRING")) {
                                         for (int j = 0; j < instruction[1].length(); j++) {
                                                 char c = instruction[1].charAt(j);
                                                 addBytes(file,charToBytes(c));
                                         }
-                                } else if (instruction[0].equals("CONTROL")
+                                	} else if (instruction[0].equals("CONTROL")
                                                 || instruction[0].equals("CTRL")) {
                                         if (instruction.length != 1){
                                                 file.add(strInstrToByte(instruction[1]));
@@ -209,7 +240,7 @@ public class Encoder {
                                                 file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_CTRL")));
                                                 file.add((byte) 0x00);
                                         }                               
-                                } else if (instruction[0].equals("ALT")) {
+                                	} else if (instruction[0].equals("ALT")) {
                                         if (instruction.length != 1){
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_ALT")));
@@ -217,7 +248,7 @@ public class Encoder {
                                                 file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_ALT")));
                                                 file.add((byte) 0x00);
                                         }
-                                } else if (instruction[0].equals("SHIFT")) {
+                                	} else if (instruction[0].equals("SHIFT")) {
                                         if (instruction.length != 1) {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT")));
@@ -225,7 +256,7 @@ public class Encoder {
                                                 file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_SHIFT")));
                                                 file.add((byte) 0x00);
                                         }
-                                } else if (instruction[0].equals("CTRL-ALT")) {
+                                	} else if (instruction[0].equals("CTRL-ALT")) {
                                         if (instruction.length != 1) {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_CTRL"))
@@ -233,7 +264,7 @@ public class Encoder {
                                         } else {
                                                 continue;
                                         }
-                                } else if (instruction[0].equals("CTRL-SHIFT")) {
+                                	} else if (instruction[0].equals("CTRL-SHIFT")) {
                                         if (instruction.length != 1) {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_CTRL"))
@@ -241,16 +272,16 @@ public class Encoder {
                                         } else {
                                                 continue;
                                         }
-                                } else if (instruction[0].equals("ALT-SHIFT")) {
+                                	} else if (instruction[0].equals("ALT-SHIFT")) {
                                                 file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_ALT")));
-						file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
+												file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
                                                                 | strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT"))));
 					
-                                } else if (instruction[0].equals("REM")) {
+                                	} else if (instruction[0].equals("REM")) {
                                         /* no default delay for the comments */
                                         delayOverride = true;
                                         continue;
-                                } else if (instruction[0].equals("WINDOWS")
+                                	} else if (instruction[0].equals("WINDOWS")
                                                 || instruction[0].equals("GUI")) {
                                         if (instruction.length == 1) {
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
@@ -259,7 +290,7 @@ public class Encoder {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
                                         }
-                                } else if (instruction[0].equals("COMMAND")){
+                                	} else if (instruction[0].equals("COMMAND")){
                                         if (instruction.length == 1) {
                                                 file.add(strToByte(keyboardProps.getProperty("KEY_COMMAND")));
                                                 file.add((byte) 0x00);
@@ -267,12 +298,13 @@ public class Encoder {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_GUI")));
                                         }
-                                }else {
+                                	}else {
                                         /* treat anything else as a key */
                                         file.add(strInstrToByte(instruction[0]));
                                         file.add((byte) 0x00);
-                                }
-
+                                	}
+                                	loop--;
+								}
                                 // Default delay
                                 if (!delayOverride & defaultDelay > 0) {
                                         int delayCounter = defaultDelay;

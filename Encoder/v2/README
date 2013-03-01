@@ -6,10 +6,10 @@ $java -jar duckencode.jar -i script.txt -o inject.bin -l resources/mylayout.prop
 
 ----------
 
-Hak5 Duck Encoder 2.2
+Hak5 Duck Encoder 2.4
 
-usage: duckencode -i [file ..]            encode specified file
-   or: duckencode -i [file ..] -o [file ..]    encode to specified file
+usage: duckencode -i [file ..] encode specified file
+   or: duckencode -i [file ..] -o [file ..] encode to specified file
 
 Arguments:
    -i [file ..]         Input File
@@ -18,6 +18,7 @@ Arguments:
 
 Script Commands:
    ALT [key name] (ex: ALT F4, ALT SPACE)
+   ALT-SHIFT (Input Lanugage Swap)
    CTRL | CONTROL [key name] (ex: CTRL ESC)
    CTRL-ALT [key name] (ex: CTRL-ALT DEL)
    CTRL-SHIFT [key name] (ex: CTRL-SHIFT ESC)
@@ -27,6 +28,7 @@ Script Commands:
    GUI | WINDOWS [key name] (ex: GUI r, GUI l)
    REM [anything] (used to comment your code, no obligation :) )
    SHIFT [key name] (ex: SHIFT DEL)
+   REPEAT [Number] (Repeat last command N times)
    STRING [any character of your layout]
    [key name] (anything in the keyboard.properties)
 
