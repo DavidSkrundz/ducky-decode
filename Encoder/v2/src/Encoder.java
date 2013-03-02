@@ -197,6 +197,9 @@ public class Encoder {
                                         instruction[1].trim();
                                 }
 
+								if (instruction[0].equals("REM")){
+									continue;
+								}
 								if (instruction[0].equals("REPEAT")){
 									loop=Integer.parseInt(instruction[1].trim());
 									repeat=true;
@@ -207,8 +210,9 @@ public class Encoder {
 								while(loop>0){
 									if (repeat){
 										instruction=last_instruction;
+										//System.out.println(Integer.toString(instruction.length));
 									}
-								
+								//System.out.println(instruction[0]+" "+instruction[1]);
                                 	if (instruction[0].equals("DEFAULT_DELAY")
                                                 || instruction[0].equals("DEFAULTDELAY")) {
                                       	  defaultDelay = Integer.parseInt(instruction[1].trim());
