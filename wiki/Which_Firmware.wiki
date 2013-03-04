@@ -127,5 +127,3 @@ Then execute your payload (this example duck.bat)
 {{{
 %myd%/duck
 }}}
-
-_More Information is on the TwinDuck_Howto_ Wiki Page_
