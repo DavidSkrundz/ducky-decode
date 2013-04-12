@@ -57,7 +57,7 @@ java -jar duckencoder.java -l resources\fr.properties -i input_file.txt -o injec
 *Note* : Backslash instead of forward slash
 
 = Problems =
-== Trying to run encoder.jar under OS X 10.8 Mountain Lion ==
+== Trying to run encoder.jar under OS X 10.5 (Leopard)-10.8 (Mountain Lion) ==
 Error:
 {{{
 $ java -jar encoder.jar
