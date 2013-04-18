@@ -97,6 +97,13 @@ Version 2 has added improvements - multi OS support, downside memory is limited 
 
 Nicknamed * The Twin Duck * as it functions as 2x separate Duckies; its primary function is mass-storage, and the HID attack is triggered through pushing the Ducky's button.
 
+==cm_duck.hex alpha(unamed)==
+Requested after the success of Twin Duck (c_duck.hex).  This firmware has a HID keyboard with two keyboard triggers and mass storage.
+
+This firmware attempts to merge Twin and Detour Ducks into one firmware.
+ * NUM_Lock - Triggers inject.bin (limited to 2KB of instructions)
+ * CAPS_Lock - Triggers inject2.bin (limited to 2KB instructions)
+
 ===Special Requests===
 ====S001====
 People were worried about driver load times affecting their payloads.  So S001 uses keyboard LEDs as the HID trigger; NUM/CAPS/SCROLL LOCK all trigger 1x payload _inject.bin_.
