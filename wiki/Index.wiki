@@ -5,6 +5,7 @@
 
 === Encoder ===
  * [Encoder_Howto Encoder Guide]
+ * [Payload Guide]
  * [Guide_Change_USB_VID_PID How to easily change the VID and PID of the Ducky]
  * [Create_New_Language_Map How to Create New Language Maps]
 
