@@ -5,7 +5,8 @@
 // Modified:     8/18/2012
 // Modified:     1/3/2013 midnitesnake "added COMMAND"
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
-// Modified:	 3/1/2013 midnitesnake "added REPEAT X"
+// Modified:	 1/3/2013 midnitesnake "added REPEAT X"
+// Modified:     4/18/2013 midnitesnake "added more user feedback"
 
 
 import java.io.DataInputStream;
@@ -28,16 +29,18 @@ public class Encoder {
         private static Properties keyboardProps = new Properties();
         /* contains the language layout */
         private static Properties layoutProps = new Properties();
-        
+        private static String version = "2.5";
+        private static Boolean debug=false;
+    
         public static void main(String[] args) {
-                String helpStr = "Hak5 Duck Encoder 2.4\n\n"
-                        + "usage: duckencode -i [file ..]\t\t\tencode specified file\n"
-                        + "   or: duckencode -i [file ..] -o [file ..]\tencode to specified file\n"
-                        + "\nArguments:\n"
+                String helpStr = "Hak5 Duck Encoder"+version+"\n\n"
+                        + "Usage: duckencode -i [file ..]\t\t\tencode specified file\n"
+                        + "   or: duckencode -i [file ..] -o [file ..]\tencode to specified file\n\n"
+                        + "Arguments:\n"
                         + "   -i [file ..] \t\tInput File\n"
                         + "   -o [file ..] \t\tOutput File\n"
-                        + "   -l [file ..] \t\tKeyboard Layout (us/fr/pt or a path to a properties file)\n"
-                        + "\nScript Commands:\n"
+                        + "   -l [file ..] \t\tKeyboard Layout (us/fr/pt or a path to a properties file)\n\n"
+                        + "Script Commands:\n"
                         + "   ALT [key name] (ex: ALT F4, ALT SPACE)\n"
                         + "   CTRL | CONTROL [key name] (ex: CTRL ESC)\n"
                         + "   CTRL-ALT [key name] (ex: CTRL-ALT DEL)\n"
@@ -47,7 +50,7 @@ public class Encoder {
                         + "   GUI | WINDOWS [key name] (ex: GUI r, GUI l)\n"
                         + "   REM [anything] (used to comment your code, no obligation :) )\n"
                         + "   ALT-SHIFT (swap language)\n"
-			+ "   SHIFT [key name] (ex: SHIFT DEL)\n"
+						+ "   SHIFT [key name] (ex: SHIFT DEL)\n"
                         + "   STRING [any character of your layout]\n"
                         + "   REPEAT [Number] (Repeat last instruction N times)\n"
                         + "   [key name] (anything in the keyboard.properties)";                        
@@ -75,12 +78,17 @@ public class Encoder {
                 } else if (args[i].equals("-l")) {
                         // output file
                         layoutFile = args[++i];
+                } else if (args[i].equals("-d")) {
+                    // output file
+                    debug=true;
                 } else {
                         System.out.println(helpStr);
                         break;
                 }
         }
-
+            
+        System.out.println("Hak5 Duck Encoder "+version+"\n");
+        
         if (inputFile != null) {
                 String scriptStr = null;
 
@@ -92,11 +100,13 @@ public class Encoder {
                                 kit.read(stream, doc, 0);
 
                                 scriptStr = doc.getText(0, doc.getLength());
+                                System.out.println("Loading RTF .....\t\t[ OK ]");
                         } catch (IOException e) {
                                 System.out.println("Error with input file!");
                         } catch (BadLocationException e) {
                                 System.out.println("Error with input file!");
                         }
+                    
                 } else {
                         DataInputStream in = null;
                         try {
@@ -105,7 +115,7 @@ public class Encoder {
                                 in = new DataInputStream(new FileInputStream(f));
                                 in.readFully(buffer);
                                 scriptStr = new String(buffer);
-
+                                System.out.println("Loading File .....\t\t[ OK ]");
                         } catch (IOException e) {
                                 System.out.println("Error with input file!");
                         } finally {
@@ -131,6 +141,7 @@ public class Encoder {
                         if(in != null){
                                 keyboardProps.load(in);
                                 in.close();
+                                System.out.println("Loading Keyboard File .....\t[ OK ]");
                         }else{
                                 System.out.println("Error with keyboard.properties!");
                                 System.exit(0);
@@ -144,9 +155,11 @@ public class Encoder {
                         if(in != null){
                                 layoutProps.load(in);
                                 in.close();
+                                System.out.println("Loading Language File .....\t[ OK ]");
                         }else{
                                 if(new File(lang).isFile()){
                                         layoutProps.load(new FileInputStream(lang));
+                                        System.out.println("Loading Language File .....\t[ OK ]");
                                 } else{
                                         System.out.println("External layout.properties non found!");
                                         System.exit(0);
@@ -167,15 +180,16 @@ public class Encoder {
                 int defaultDelay = 0;
                 int loop =0;
                 boolean repeat=false;
-
+                System.out.println("Loading DuckyScript .....\t[ OK ]");
+                if(debug) System.out.println("\nParsing Commands:");
                 for (int i = 0; i < instructions.length; i++) {
                         try {
                                 boolean delayOverride = false;
                                 String commentCheck = instructions[i].substring(0, 2);
                                 if (commentCheck.equals("//"))
                                         continue;
-
-                                String instruction[] = instructions[i].split(" ", 2);
+                            
+                               String[] instruction = instructions[i].split(" ", 2);
                                 
                                 if(i>0){
                                 		last_instruction=instructions[i-1].split(" ", 2);
@@ -212,7 +226,7 @@ public class Encoder {
 										instruction=last_instruction;
 										//System.out.println(Integer.toString(instruction.length));
 									}
-								//System.out.println(instruction[0]+" "+instruction[1]);
+								if (debug) System.out.println(instruction[0]+" "+instruction[1]);
                                 	if (instruction[0].equals("DEFAULT_DELAY")
                                                 || instruction[0].equals("DEFAULTDELAY")) {
                                       	  defaultDelay = Integer.parseInt(instruction[1].trim());
@@ -340,9 +354,11 @@ public class Encoder {
                         fos.write(data);
                         fos.flush();
                         fos.close();
+                        System.out.println("DuckyScript Complete.....\t[ OK ]\n");
                 } catch (Exception e) {
                         System.out.print("Failed to write hex file!");
                 }
+            
         }
 
         private static void addBytes(List<Byte> file, byte[] byteTab){
