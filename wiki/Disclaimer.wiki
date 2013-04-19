@@ -5,4 +5,8 @@ The information contained in this website is for general information purposes on
 
 Ducky-Decode is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-Whatever you do with this tool is uniquely your responsibility. If you are not authorized to connect the USB Rubber Ducky to Computer Systems such action might get you in trouble with a lot of law enforcement agencies.
+Whatever you do with this tool is uniquely your responsibility. 
+
+USB Rubber Ducky is a penetration testing tool for use in authorized security audits where permitted. 
+
+Check laws and obtain client permission before using.
