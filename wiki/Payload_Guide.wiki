@@ -4,7 +4,7 @@
 Since first time Ducky users are unfamiliar with Ducky Script, below is a brief summary (with examples) on how to code in Ducky Script.
 
 = Example 1 - Hello World =
-The Ducky fires the payload immediately, so you need an initial delay for the OS to recognize and allow the Ducky to proceed as a keyboard, in this example we use a delay of 30secs (3000msecs) for the Windows OS (other OS's may be quicker).
+The Ducky fires the payload immediately, so you need an initial delay for the OS to recognize and allow the Ducky to proceed as a keyboard, in this example we use a delay of 3secs (3000msecs) for the Windows OS (other OS's may be quicker).
 
 The steps of this example can be broken down into:
  * Initial Delay for the OS
