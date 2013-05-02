@@ -6,7 +6,7 @@ $java -jar duckencode.jar -i script.txt -o inject.bin -l resources/mylayout.prop
 
 ----------
 
-Hak5 Duck Encoder 2.4
+Hak5 Duck Encoder 2.6
 
 usage: duckencode -i [file ..] encode specified file
    or: duckencode -i [file ..] -o [file ..] encode to specified file
