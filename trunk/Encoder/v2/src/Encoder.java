@@ -7,7 +7,7 @@
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
 // Modified:	 1/3/2013 midnitesnake "added REPEAT X"
 // Modified:     4/18/2013 midnitesnake "added more user feedback"
-
+// Modified:	 5/2/2013 midnitesnake "added skip over empty lines"
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -29,7 +29,7 @@ public class Encoder {
         private static Properties keyboardProps = new Properties();
         /* contains the language layout */
         private static Properties layoutProps = new Properties();
-        private static String version = "2.5";
+        private static String version = "2.6";
         private static Boolean debug=false;
     
         public static void main(String[] args) {
@@ -188,7 +188,8 @@ public class Encoder {
                                 String commentCheck = instructions[i].substring(0, 2);
                                 if (commentCheck.equals("//"))
                                         continue;
-                            
+				if (instructions[i].equals("\n"))
+					continue;
                                String[] instruction = instructions[i].split(" ", 2);
                                 
                                 if(i>0){
@@ -337,7 +338,10 @@ public class Encoder {
                                                 }
                                         }
                                 }
-                        } catch (Exception e) {
+                        }catch (StringIndexOutOfBoundsException e){
+				//do nothing
+                        }
+                        catch (Exception e) {
                                 System.out.println("Error on Line: " + (i + 1));
                                 e.printStackTrace();
                         }
