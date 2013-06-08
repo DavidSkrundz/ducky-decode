@@ -9,6 +9,7 @@
  * [Keyboard_VID_PIDS Keyboard Devices]
  * [MassStorage_VID_PIDS Mass Storage Devices]
  * [Composite_VID_PIDS Composite Devices]
+ * [Advanced Section] (not for beginners)
  * [FAQ]	
  * [HID_Codes]
  * [Atmel_License]
