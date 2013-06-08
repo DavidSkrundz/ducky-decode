@@ -19,6 +19,7 @@
  * [Composite_VID_PIDS Composite Devices]	
 
 ===Other===
+ * [Advanced_Section]
  * [FAQ]
  * [Disclaimer]
 ====Codes====
