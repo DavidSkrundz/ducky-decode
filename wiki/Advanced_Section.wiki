@@ -92,7 +92,7 @@ Here you can:
  * hold keys down indefinitely
  * build complicated key combos _eg. Ctrl+Alt+Shift+F6_ 
 
-If you do not understand strut's, basically each array entity has 3 elements:
+If you do not understand strut's, basically each array element has 3x fields:
  * boolean b_modifier = is this key a modifier and currently down/pressed true/false?
  * boolean b_down = is this button down/pressed true/false?
  * HID_X = name of the key (US Language)
