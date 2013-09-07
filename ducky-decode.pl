@@ -98,6 +98,12 @@ for($i=1;$i<@buffer;$i++){
                                 	$hex = unpack("h*",$buffer[$i]);
 					$hex=~s/0005/\nDELAY 1100\n/g;
 					$hex=~s/004b/\nDELAY 1200\n/g;
+					$hex=~ s/00ff/EXT/g;
+					if($hex eq "EXT"){
+						$i++;
+						$hex = unpack("h*",$buffer[$i]);
+						$hex=~s/007d/\nDELAY 2000\n/g;
+					}
 				}
 			}
 
@@ -136,7 +142,9 @@ for($i=1;$i<@buffer;$i++){
         $hex=~ s/^8320/\?/g;
 	$hex=~ s/^4600/\\/g; 
         $hex=~ s/^4620/\|/g;
+	$hex=~ s/^d220/_/g;
         $hex=~ s/^902e/\nALT F\n/g;
+	$hex=~ s/^c140/\nALT Y\n/g;
 	$hex=~ s/^6110/\nCTRL S\n/g;
 	$hex=~ s/^9110/\nCTRL V\n/g;
 	$hex=~ s/^b110/\nCTRL X\n/g;
