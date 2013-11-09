@@ -3,6 +3,7 @@
 // Original Author:Jason Appelbaum Jason@Hak5.org 
 // Author:       Dnucna
 // Modified:     8/18/2012
+// MOdified:	 11/9/2013 midnitesnake "added COMMAND-OPTION"
 // Modified:     1/3/2013 midnitesnake "added COMMAND"
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
 // Modified:	 1/3/2013 midnitesnake "added REPEAT X"
@@ -288,6 +289,14 @@ public class Encoder {
                                                 file.add(strInstrToByte(instruction[1]));
                                                 file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_CTRL"))
                                                                 | strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT"))));
+                                        } else {
+                                                continue;
+                                        }
+					} else if (instruction[0].equals("COMMAND-OPTION")) {
+                                        if (instruction.length != 1) {
+                                                file.add(strInstrToByte(instruction[1]));
+                                                file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_KEY_LEFT_GUI"))
+                                                                | strToByte(keyboardProps.getProperty("MODIFIERKEY_ALT"))));
                                         } else {
                                                 continue;
                                         }
