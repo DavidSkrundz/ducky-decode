@@ -30,11 +30,11 @@ public class Encoder {
         private static Properties keyboardProps = new Properties();
         /* contains the language layout */
         private static Properties layoutProps = new Properties();
-        private static String version = "2.6";
+        private static String version = "2.6.2";
         private static Boolean debug=false;
     
         public static void main(String[] args) {
-                String helpStr = "Hak5 Duck Encoder"+version+"\n\n"
+                String helpStr = "Hak5 Duck Encoder "+version+"\n\n"
                         + "Usage: duckencode -i [file ..]\t\t\tencode specified file\n"
                         + "   or: duckencode -i [file ..] -o [file ..]\tencode to specified file\n\n"
                         + "Arguments:\n"
