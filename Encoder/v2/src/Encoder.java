@@ -3,10 +3,10 @@
 // Original Author:Jason Appelbaum Jason@Hak5.org 
 // Author:       Dnucna
 // Modified:     8/18/2012
-// MOdified:	 11/9/2013 midnitesnake "added COMMAND-OPTION"
+// Modified:	 11/9/2013 midnitesnake "added COMMAND-OPTION"
 // Modified:     1/3/2013 midnitesnake "added COMMAND"
+// Modified:     1/3/2013 midnitesnake "added REPEAT X"
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
-// Modified:	 1/3/2013 midnitesnake "added REPEAT X"
 // Modified:     4/18/2013 midnitesnake "added more user feedback"
 // Modified:	 5/2/2013 midnitesnake "added skip over empty lines"
 
@@ -51,7 +51,7 @@ public class Encoder {
                         + "   GUI | WINDOWS [key name] (ex: GUI r, GUI l)\n"
                         + "   REM [anything] (used to comment your code, no obligation :) )\n"
                         + "   ALT-SHIFT (swap language)\n"
-						+ "   SHIFT [key name] (ex: SHIFT DEL)\n"
+			+ "   SHIFT [key name] (ex: SHIFT DEL)\n"
                         + "   STRING [any character of your layout]\n"
                         + "   REPEAT [Number] (Repeat last instruction N times)\n"
                         + "   [key name] (anything in the keyboard.properties)";                        
@@ -301,10 +301,15 @@ public class Encoder {
                                                 continue;
                                         }
                                 	} else if (instruction[0].equals("ALT-SHIFT")) {
-                                                file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_ALT")));
-												file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
+                                        if (instruction.length != 1) {
+						file.add(strInstrToByte(instruction[1]));
+						file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
                                                                 | strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT"))));
-					
+					} else {
+						file.add(strToByte(keyboardProps.getProperty("KEY_LEFT_ALT")));
+                                                                                                file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
+                                                                | strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT"))));
+					}
                                 	} else if (instruction[0].equals("REM")) {
                                         /* no default delay for the comments */
                                         delayOverride = true;
