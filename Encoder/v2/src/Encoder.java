@@ -9,6 +9,7 @@
 // Modified:	 2/5/2013 midnitesnake "added ALT-SHIFT"
 // Modified:     4/18/2013 midnitesnake "added more user feedback"
 // Modified:	 5/2/2013 midnitesnake "added skip over empty lines"
+// Modified:     1/12/2014 Benthejunebug "added ALT-TAB"
 
 import java.io.DataInputStream;
 import java.io.File;
@@ -30,7 +31,7 @@ public class Encoder {
         private static Properties keyboardProps = new Properties();
         /* contains the language layout */
         private static Properties layoutProps = new Properties();
-        private static String version = "2.6.2";
+        private static String version = "2.6.3";
         private static Boolean debug=false;
     
         public static void main(String[] args) {
@@ -310,7 +311,14 @@ public class Encoder {
                                                                                                 file.add((byte) (strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT"))
                                                                 | strToByte(keyboardProps.getProperty("MODIFIERKEY_SHIFT"))));
 					}
-                                	} else if (instruction[0].equals("REM")) {
+                                	} else if (instruction[0].equals("ALT-TAB")){
+					if (instruction.length == 1) {
+						file.add(strToByte(keyboardProps.getProperty("KEY_TAB")));
+						file.add(strToByte(keyboardProps.getProperty("MODIFIERKEY_LEFT_ALT")));
+					}else{
+						//do something?
+					}
+					}else if (instruction[0].equals("REM")) {
                                         /* no default delay for the comments */
                                         delayOverride = true;
                                         continue;
