@@ -95,7 +95,7 @@ This was another one of my goals (in addition to several requests).  Got a worki
 
 Version 2 has added improvements - multi OS support, downside memory is limited to 4KB (2048 key presses).
 
-Nicknamed * The Twin Duck * as it functions as 2x separate Duckies; its primary function is mass-storage, and the HID attack is triggered through pushing the Ducky's button.
+Nicknamed * The Twin Duck * as it functions as 2x separate Duckies; its primary function is mass-storage, and the HID attack is auto-triggered.
 
 ==cm_duck.hex alpha(unamed)==
 Requested after the success of Twin Duck (c_duck.hex).  This firmware has a HID keyboard with two keyboard triggers and mass storage.
@@ -112,7 +112,7 @@ People were worried about driver load times affecting their payloads.  So S001 u
 People were worried about driver load times affecting their payloads.  So S002 uses the Ducky's GPIO button as the HID trigger; for payload _inject.bin_.
 
 ==Why Composite Firmware?==
-Brings back the ol' Autorun/ USB-Switchblade attacks.
+Brings back the old Autorun/ USB-Switchblade attacks.
 
 ===Function===
 To access Programs on the SDcard you are advised to label the SDcard eg. _DUCKY_
