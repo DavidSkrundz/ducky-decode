@@ -37,6 +37,8 @@ package org.hak5.projects.rubberducky.encoder;
  *										 -  * Added SamplePack.duckling.jar file.
  *										 -  * Added __DEBUG_MODE__ switch to encoder.
  *										 -  * Added output text to show progress to user.
+ *          v3.0.1 (01/07/2014)   - (m1s73r)
+ *                     -  * Fixed infinite loop when using input file with REM only.
  */
 
 import java.io.DataInputStream;
@@ -681,7 +683,7 @@ public class Main {
 					case "COMMENT":
 						/* no default delay for the comments */
 						delayOverride = true;
-						continue;
+						break;
 
 						/**
 						 * REPEAT Command
