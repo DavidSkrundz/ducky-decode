@@ -100,6 +100,12 @@ Available here:
  * [http://downloads.sourceforge.net/project/dfu-programmer/dfu-programmer/0.5.4/dfu-programmer-0.5.4.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdfu-programmer%2F%3Fsource%3Ddlp&ts=1354995624&use_mirror=netcologne dfu-programmer-0.5.4]
 
 *Note*: There are reported problems with dfu programmer version 0.5.2, please try the latest version in the link provided above.
+===Errors===
+When running make:
+{{{
+"Fatal Error: usb.h not found".
+}}}
+You have not installed the package libusb-dev (libusb-1.0-0-dev ubuntu) (libusb-devel OSX), either compile from source, or recommended solution: *use your package manager!*
 
 ===Flashing the Firmware===
 
