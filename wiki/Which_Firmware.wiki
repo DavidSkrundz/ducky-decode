@@ -26,6 +26,8 @@ This is where different languages/keyboard mappings come into effect.  Currently
  * DE (German)
  * DK (Danish)
  * FR (French)
+ * CA (Canadian)
+ * CH (Swiss)
  * BE (Belgian)
  * NO (Norwegian)
  * PT (Portuguese)
